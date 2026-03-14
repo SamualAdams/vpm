@@ -28,6 +28,30 @@ uv run vpm
 
 The backend runs on `http://127.0.0.1:8000` by default.
 
+## One-command demo loop
+
+Start everything, run the automated checks, and boot the backend and frontend:
+
+```bash
+./start.sh
+```
+
+Stop the local servers:
+
+```bash
+./stop.sh
+```
+
+`start.sh` does the following each time:
+
+- runs `uv sync --group dev`
+- runs `npm ci` in `web/`
+- runs `uv run pytest`
+- runs `npm run test`
+- runs `npm run build`
+- starts the backend and frontend in the background
+- writes logs and pid files under `.vpm/run/`
+
 Health check:
 
 ```bash
