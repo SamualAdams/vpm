@@ -13,7 +13,7 @@ BACKEND_HOST="${VPM_HOST:-127.0.0.1}"
 BACKEND_PORT="${VPM_PORT:-8000}"
 FRONTEND_HOST="${VPM_FRONTEND_HOST:-127.0.0.1}"
 FRONTEND_PORT="${VPM_FRONTEND_PORT:-5173}"
-BACKEND_BIN="$PROJECT_ROOT/.venv/bin/vpm"
+BACKEND_PYTHON="$PROJECT_ROOT/.venv/bin/python"
 FRONTEND_BIN="$PROJECT_ROOT/web/node_modules/vite/bin/vite.js"
 
 log() {
@@ -100,7 +100,7 @@ log "Preparing frontend dependencies"
 (cd "$PROJECT_ROOT/web" && npm ci)
 
 log "Running backend tests"
-(cd "$PROJECT_ROOT" && uv run pytest)
+(cd "$PROJECT_ROOT" && uv run python -m pytest)
 
 log "Running frontend tests"
 (cd "$PROJECT_ROOT/web" && npm run test)
@@ -112,10 +112,10 @@ log "Stopping any previous local processes"
 stop_if_running
 
 log "Starting backend"
-[[ -x "$BACKEND_BIN" ]] || fail "Backend launcher not found: $BACKEND_BIN"
+[[ -x "$BACKEND_PYTHON" ]] || fail "Backend Python not found: $BACKEND_PYTHON"
 (
   cd "$PROJECT_ROOT"
-  start_detached "$BACKEND_PID_FILE" "$BACKEND_LOG" env VPM_HOST="$BACKEND_HOST" VPM_PORT="$BACKEND_PORT" "$BACKEND_BIN"
+  start_detached "$BACKEND_PID_FILE" "$BACKEND_LOG" env VPM_HOST="$BACKEND_HOST" VPM_PORT="$BACKEND_PORT" "$BACKEND_PYTHON" -m vpm
 )
 
 backend_pid="$(cat "$BACKEND_PID_FILE")"
