@@ -1,0 +1,253 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 157, 92, 0.18), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(61, 132, 168, 0.18), transparent 28%),
+    #f6f0e8;
+  color: #1d2630;
+}
+
+.workspace {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(29, 38, 48, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(29, 38, 48, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.rail {
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.73rem;
+  color: #9a5c30;
+}
+
+.rail h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.summary-card {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1d2630, #37556b);
+  color: #f7efe6;
+}
+
+.summary-card p {
+  margin: 0;
+}
+
+.summary-card strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.section {
+  border: 1px solid rgba(29, 38, 48, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 250, 245, 0.92);
+  overflow: hidden;
+}
+
+.section button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.section button:hover {
+  background: rgba(255, 157, 92, 0.08);
+}
+
+.section-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 18px 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.section-list li {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(29, 38, 48, 0.07);
+}
+
+.section-list strong,
+.status-card strong,
+.artifact-card strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.meta {
+  color: #6f7780;
+  font-size: 0.9rem;
+}
+
+.content {
+  padding: 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.hero h2 {
+  margin: 6px 0 10px;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 52rem;
+  color: #52606d;
+}
+
+.status-chip {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  background: rgba(61, 132, 168, 0.14);
+  color: #205c76;
+  white-space: nowrap;
+}
+
+.status-chip.offline {
+  background: rgba(168, 74, 61, 0.16);
+  color: #8d2d24;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
+  gap: 20px;
+}
+
+.composer,
+.artifacts {
+  display: grid;
+  gap: 16px;
+}
+
+.composer-card,
+.status-card,
+.artifact-card {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(29, 38, 48, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.composer textarea {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  border-radius: 18px;
+  border: 1px solid rgba(29, 38, 48, 0.12);
+  padding: 16px;
+  font: inherit;
+  color: inherit;
+  background: rgba(248, 243, 237, 0.9);
+}
+
+.composer textarea:focus {
+  outline: 2px solid rgba(255, 157, 92, 0.5);
+  border-color: transparent;
+}
+
+.composer-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #1d2630;
+  color: #f7efe6;
+}
+
+.secondary-button {
+  background: rgba(29, 38, 48, 0.08);
+  color: #1d2630;
+}
+
+.artifact-card ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.artifact-card li + li {
+  margin-top: 8px;
+}
+
+@media (max-width: 1100px) {
+  .workspace,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .rail,
+  .content {
+    padding: 16px;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+}
