@@ -46,7 +46,7 @@ Stop the local servers:
 
 - runs `uv sync --group dev`
 - runs `npm ci` in `web/`
-- runs `uv run pytest`
+- runs `uv run python -m pytest`
 - runs `npm run test`
 - runs `npm run build`
 - starts the backend and frontend in the background
@@ -85,7 +85,7 @@ The Vite dev server runs on `http://127.0.0.1:5173` and proxies `/api` and `/hea
 Backend:
 
 ```bash
-uv run pytest
+uv run python -m pytest
 ```
 
 Frontend:
